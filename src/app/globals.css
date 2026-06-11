@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Anton", "Arial Narrow", sans-serif;
+  --font-body: "Archivo Variable", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --concrete: #edebe4;
+  --ink: #141b20;
+  --jet: #0c86c4;
+  --amber: #ffa800;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis owns scrolling */
+}
+
+body {
+  background: var(--concrete);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--jet);
+  color: #fff;
+}
+
+/* ── Job-sheet eyebrow label ─────────────────────────────── */
+@layer components {
+.ticket {
+  @apply inline-flex items-center gap-2 border border-ink/30 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em];
+}
+.ticket--light {
+  @apply border-concrete/40 text-concrete;
+}
+.ticket::before {
+  content: "";
+  @apply block h-1.5 w-1.5 bg-amber;
+}
+}
+
+/* ── The clean line — signature diagonal wipe motif ──────── */
+.clean-line {
+  position: relative;
+}
+.clean-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 49.6%,
+    var(--jet) 49.6%,
+    var(--jet) 50.4%,
+    transparent 50.4%
+  );
+  pointer-events: none;
+}
+
+/* Display headline defaults */
+.h-display {
+  @apply font-display uppercase leading-[0.92] tracking-tight;
+}
+
+/* Focus visibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--jet);
+  outline-offset: 3px;
+}
+
+/* Reduced motion: kill transforms & long transitions globally */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Swiper pagination theming */
+.swiper-pagination-bullet {
+  background: var(--ink);
+  opacity: 0.25;
+}
+.swiper-pagination-bullet-active {
+  background: var(--jet);
+  opacity: 1;
+}

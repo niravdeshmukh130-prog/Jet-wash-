@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <pattern id="blocksd" width="200" height="100" patternUnits="userSpaceOnUse">
+      <rect width="200" height="100" fill="#3d3a30"/>
+      <rect x="2" y="2" width="96" height="46" rx="3" fill="#4a463a"/>
+      <rect x="102" y="2" width="96" height="46" rx="3" fill="#454135"/>
+      <rect x="-48" y="52" width="96" height="46" rx="3" fill="#484438"/>
+      <rect x="52" y="52" width="96" height="46" rx="3" fill="#4d4a3d"/>
+      <rect x="152" y="52" width="96" height="46" rx="3" fill="#423e32"/>
+    </pattern>
+    <filter id="moss">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="4" seed="7" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.18  0 0 0 0 0.25  0 0 0 0 0.10  0 0 0 0.9 0" result="green"/>
+      <feComposite in="green" in2="SourceGraphic" operator="atop" result="mossy"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" result="g"/>
+      <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.18 0" result="dirt"/>
+      <feMerge><feMergeNode in="mossy"/><feMergeNode in="dirt"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#blocksd)"/>
+  <rect width="1600" height="1000" fill="url(#blocksd)" filter="url(#moss)" opacity="0.85"/>
+</svg>
