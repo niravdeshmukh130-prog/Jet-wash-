@@ -69,7 +69,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-GB" >
+    <html lang="en-GB" suppressHydrationWarning>
       <body className="font-sans">
         <script
           type="application/ld+json"
